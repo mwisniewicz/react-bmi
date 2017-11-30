@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900&subset=latin-ext');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.header-main {
+    height: 150px;
+    background: linear-gradient(to right, #333 20%,#000 100%);
+    color: #fff;
+    padding: 40px 0px 40px 0px;
+}
+
+.header-main h1 span{
+    font-weight: 300;
+}
+
+.header-main-subtitle {
+    display: flex;
+    align-items: center;
+}
+
+.header-main-subtitle h3 {
+    font-weight: 100;
+    padding-left: 5px;
+}
