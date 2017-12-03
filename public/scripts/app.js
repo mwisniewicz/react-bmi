@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -23,24 +23,38 @@ var MainApplication = function (_React$Component) {
     }
 
     _createClass(MainApplication, [{
-        key: 'handleParams',
+        key: "handleParams",
         value: function handleParams(mass, height) {
             if (!mass) {
                 return 'Enter valid value';
             } else {
-                var BMI = mass / (height * height);
-                return 'BMI: ' + BMI;
+                var height_in_meter = height / 100.0;
+                var BMI = mass / (height_in_meter * height_in_meter);
+                return React.createElement(
+                    "div",
+                    { className: "bmi-result" },
+                    React.createElement(
+                        "p",
+                        { className: "bmi-title" },
+                        "Your BMI:"
+                    ),
+                    React.createElement(
+                        "p",
+                        { className: "bmi-value" },
+                        BMI.toFixed(2)
+                    )
+                );
             }
         }
     }, {
-        key: 'render',
+        key: "render",
         value: function render() {
 
             var title = 'BMI';
             var title_thin = 'CALCULATOR';
             var subtitle = 'powered by React';
             return React.createElement(
-                'div',
+                "div",
                 null,
                 React.createElement(Header, { title: title, title_thin: title_thin, subtitle: subtitle }),
                 React.createElement(CalculateBMI, {
@@ -55,27 +69,27 @@ var MainApplication = function (_React$Component) {
 
 var Header = function Header(props) {
     return React.createElement(
-        'header',
-        { className: 'header-main' },
+        "header",
+        { className: "header-main" },
         React.createElement(
-            'div',
-            { className: 'container' },
+            "div",
+            { className: "container" },
             React.createElement(
-                'h1',
+                "h1",
                 null,
                 props.title,
                 React.createElement(
-                    'span',
+                    "span",
                     null,
                     props.title_thin
                 )
             ),
             React.createElement(
-                'div',
-                { className: 'header-main-subtitle' },
-                React.createElement('span', { className: 'devicon-react-original' }),
+                "div",
+                { className: "header-main-subtitle" },
+                React.createElement("span", { className: "devicon-react-original" }),
                 React.createElement(
-                    'h3',
+                    "h3",
                     null,
                     props.subtitle
                 )
@@ -92,17 +106,17 @@ Header.defaultProps = {
 
 var Footer = function Footer(props) {
     return React.createElement(
-        'footer',
+        "footer",
         null,
         React.createElement(
-            'h1',
+            "h1",
             null,
-            'BMI CALCULATOR'
+            "BMI CALCULATOR"
         ),
         React.createElement(
-            'h3',
+            "h3",
             null,
-            'powered by React'
+            "powered by React"
         )
     );
 };
@@ -123,7 +137,7 @@ var CalculateBMI = function (_React$Component2) {
     }
 
     _createClass(CalculateBMI, [{
-        key: 'handleParams',
+        key: "handleParams",
         value: function handleParams(e) {
             e.preventDefault();
             var mass = e.target.elements.mass.value.trim();
@@ -136,44 +150,38 @@ var CalculateBMI = function (_React$Component2) {
             console.log("work");
         }
     }, {
-        key: 'render',
+        key: "render",
         value: function render() {
             return React.createElement(
-                'div',
-                { className: 'container' },
+                "div",
+                { className: "container" },
                 React.createElement(
-                    'form',
-                    { onSubmit: this.handleParams, className: 'bmi-form' },
+                    "div",
+                    { className: "bmi-form-container" },
                     React.createElement(
-                        'div',
-                        { className: 'inputs' },
+                        "form",
+                        { onSubmit: this.handleParams, className: "bmi-form" },
                         React.createElement(
-                            'label',
-                            null,
-                            'Masa'
+                            "div",
+                            { className: "inputs" },
+                            React.createElement("input", { type: "text", name: "mass", placeholder: "WEIGHT [kg]" })
                         ),
-                        React.createElement('input', { type: 'text', name: 'mass' })
-                    ),
-                    React.createElement(
-                        'div',
-                        { className: 'inputs' },
                         React.createElement(
-                            'label',
-                            null,
-                            'Wzrost'
+                            "div",
+                            { className: "inputs" },
+                            React.createElement("input", { type: "text", name: "height", placeholder: "HEIGHT [cm]" })
                         ),
-                        React.createElement('input', { type: 'text', name: 'height' })
+                        React.createElement(
+                            "button",
+                            { className: "button" },
+                            "Calculate"
+                        )
                     ),
-                    React.createElement(
-                        'button',
-                        { className: 'button' },
-                        'Calculate'
+                    this.state.error && React.createElement(
+                        "p",
+                        null,
+                        this.state.error
                     )
-                ),
-                this.state.error && React.createElement(
-                    'p',
-                    null,
-                    this.state.error
                 )
             );
         }

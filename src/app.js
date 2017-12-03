@@ -10,8 +10,14 @@ class MainApplication extends React.Component {
         if (!mass) {
             return 'Enter valid value';
         } else {
-            const BMI = mass/(height*height);
-            return 'BMI: '+BMI;
+            const height_in_meter = height/100.0;
+            const BMI = mass/(height_in_meter*height_in_meter);
+            return (
+                <div className="bmi-result">
+                <p className="bmi-title">Your BMI:</p>
+                <p className="bmi-value">{BMI.toFixed(2)}</p>
+                </div>
+            );
         }
 
     }
@@ -83,16 +89,18 @@ class CalculateBMI extends React.Component {
     render() {
         return (
             <div className="container">
-                <form onSubmit={this.handleParams} className="bmi-form">
-                    <div className="inputs">
-                        <label>Masa</label><input type="text" name="mass" />
-                    </div>
-                    <div className="inputs">
-                    <label>Wzrost</label><input type="text" name="height" />
-                    </div>
-                    <button className="button">Calculate</button>
-                </form>
-                {this.state.error && <p>{this.state.error}</p>}
+                <div className="bmi-form-container">
+                    <form onSubmit={this.handleParams} className="bmi-form">
+                        <div className="inputs">
+                            <input type="text" name="mass" placeholder="WEIGHT [kg]"/>
+                        </div>
+                        <div className="inputs">
+                        <input type="text" name="height" placeholder="HEIGHT [cm]"/>
+                        </div>
+                        <button className="button">Calculate</button>
+                    </form>
+                    {this.state.error && <p>{this.state.error}</p>}
+                </div>
             </div>
         );
     }

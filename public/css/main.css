@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900&subset=latin-ext');
 
 * {
     padding: 0;
@@ -7,7 +7,7 @@
 }
 
 body {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-weight: 400;
 }
 
@@ -35,4 +35,59 @@ body {
 .header-main-subtitle h3 {
     font-weight: 100;
     padding-left: 5px;
+}
+
+.bmi-form-container {
+    width: 30%;
+    margin-top: 50px;
+}
+
+.bmi-form-container input{
+    width: 90%;
+    height: 40px;
+    border: 5px solid #333;
+    margin: 5px;
+    padding: 2px;
+}
+
+.bmi-form-container input::placeholder{
+    padding-left: 5px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+}
+
+.bmi-form-container button{
+    width: 90%;
+    height: 40px;
+    background-color: #333;
+    color: #fff;
+    border: 5px solid #333;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 5px;
+    padding: 2px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.bmi-form-container button:hover{
+background-color: #292929;
+transition: 0.2s ease-in-out;
+}
+
+.bmi-result {
+    margin-top: 30px;
+    margin-left: 10px;
+    display: flex;
+}
+
+.bmi-title {
+    font-weight: 300;
+    font-size: 25px;
+    margin-right: 5px;
+}
+
+.bmi-value {
+    font-weight: 700;
+    font-size: 25px;
 }
