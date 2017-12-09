@@ -30,6 +30,7 @@ class MainApplication extends React.Component {
         return (
             <div>
                 <Header title={title} title_thin={title_thin} subtitle={subtitle} />
+                <Navigation />
                 <CalculateBMI 
                     handleParams={this.handleParams}
                 />
@@ -65,6 +66,16 @@ const Footer = (props) => {
             <h3>powered by React</h3>
         </footer>
     );
+};
+
+const Navigation = (props) => {
+    return (
+            <nav>
+                <ul>
+                    <li>Home</li>
+                </ul>
+            </nav>
+        );
 };
 
 class CalculateBMI extends React.Component {
